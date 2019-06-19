@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ghostbear Dice Roller</string>
+    <string name="count_button">Count</string>
+    <string name="roll_button">Roll</string>
+    <string name="d20">D20</string>
+    <string name="d12">D12</string>
+    <string name="d10">D10</string>
+    <string name="d8">D8</string>
+    <string name="d6">D6</string>
+    <string name="d4">D4</string>
+    <string name="d10000">D10000</string>
+    <string name="dice">dice</string>
+</resources>
