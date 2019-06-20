@@ -39,8 +39,10 @@ tools:context=".DiceFragment" >
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/count_button"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:inputType="number" />
+            android:inputType="number"
+            android:text="1"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
         <Button
             android:id="@+id/rollButton"

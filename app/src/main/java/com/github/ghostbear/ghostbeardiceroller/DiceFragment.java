@@ -69,7 +69,14 @@ public class DiceFragment extends Fragment {
     }
 
     private void rollDice() {
-        int count = Integer.parseInt(mCountEditText.getText().toString());
+        String text = mCountEditText.getText().toString();
+        if (text.isEmpty()) {
+            return;
+        }
+        if (!text.matches("^[0-9]*$")) {
+            return;
+        }
+        int count = Integer.parseInt(text);
         int[] array = mDice.rollN(count);
         int sum = sum(array);
         updateResult(sum, array);
