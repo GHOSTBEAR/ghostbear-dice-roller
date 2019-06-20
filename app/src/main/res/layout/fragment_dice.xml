@@ -19,8 +19,9 @@ tools:context=".DiceFragment" >
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
             android:textColor="@color/black"
+            android:layout_marginTop="25dp"
             tools:text="D20" />
 
         <ImageView
@@ -30,7 +31,7 @@ tools:context=".DiceFragment" >
             android:layout_margin="10dp"
             android:contentDescription="@string/dice"
             android:tint="@color/colorAccent"
-            app:srcCompat="@drawable/ic_d4" />
+            app:srcCompat="@drawable/ic_d20" />
 
         <EditText
             android:id="@+id/rollCount"
@@ -38,14 +39,16 @@ tools:context=".DiceFragment" >
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/count_button"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:inputType="number" />
 
         <Button
             android:id="@+id/rollButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:text="@string/roll_button" />
 
         <TextView
@@ -53,7 +56,7 @@ tools:context=".DiceFragment" >
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             tools:text="5 + 16 + 20 = 41" />
     </LinearLayout>
 

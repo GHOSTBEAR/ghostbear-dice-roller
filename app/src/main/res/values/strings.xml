@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ghostbear Dice Roller</string>
+    <string name="app_name">Dice Roller</string>
     <string name="count_button">Count</string>
     <string name="roll_button">Roll</string>
     <string name="d20">D20</string>
