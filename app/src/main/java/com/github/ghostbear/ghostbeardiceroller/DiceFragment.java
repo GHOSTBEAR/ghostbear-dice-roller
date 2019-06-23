@@ -2,7 +2,6 @@ package com.github.ghostbear.ghostbeardiceroller;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +11,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DiceFragment extends Fragment {
-    public static final String ARG_OBJECT = "dice_object";
+import java.util.UUID;
 
-    private String mParam;
+public class DiceFragment extends Fragment {
+    private static final String EXTRA_DICE_ID = "com.github.ghostbear.ghostbeardiceroller.dice_id";
 
     private TextView mNameTextView;
     private ImageView mDiceImageView;
@@ -25,33 +24,34 @@ public class DiceFragment extends Fragment {
 
     private Dice mDice;
 
-    public DiceFragment() {
-        // Required empty public constructor
+    public static DiceFragment newIntent(UUID diceId) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(EXTRA_DICE_ID, diceId);
+
+        DiceFragment fragment = new DiceFragment();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam = getArguments().getString(ARG_OBJECT);
+            UUID diceId = (UUID) getArguments().getSerializable(EXTRA_DICE_ID);
+            mDice = DiceCollection.getInstance(getActivity()).getDice(diceId);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dice, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
+        View view = inflater.inflate(R.layout.fragment_dice, container, false);
         mNameTextView = view.findViewById(R.id.diceName);
+        mNameTextView.setText(mDice.getName());
 
         mDiceImageView = view.findViewById(R.id.diceImage);
         mDiceImageView.setOnClickListener(v -> rollDice());
+        mDiceImageView.setImageDrawable(view.getContext().getDrawable(mDice.getDrawable()));
 
         mCountEditText = view.findViewById(R.id.rollCount);
 
@@ -60,12 +60,7 @@ public class DiceFragment extends Fragment {
 
         mResult = view.findViewById(R.id.result);
 
-        update(view);
-    }
-
-    private void update(View view) {
-        mNameTextView.setText(mDice.getName());
-        mDiceImageView.setImageDrawable(view.getContext().getDrawable(mDice.getDrawable()));
+        return view;
     }
 
     private void rollDice() {
@@ -111,7 +106,4 @@ public class DiceFragment extends Fragment {
         return text.toString();
     }
 
-    public void setDice(Dice dice) {
-        mDice = dice;
-    }
 }
