@@ -18,6 +18,8 @@ public class DiceCollection {
         mDices.add(new Dice(R.string.d8, R.drawable.ic_d8, 8));
         mDices.add(new Dice(R.string.d6, R.drawable.ic_d6, 6));
         mDices.add(new Dice(R.string.d4, R.drawable.ic_d4, 4));
+        mDices.add(new Dice(R.string.d100, R.drawable.ic_cubes, 100));
+        mDices.add(new Dice(R.string.d1000, R.drawable.ic_cubes, 1_000));
         mDices.add(new Dice(R.string.d10000, R.drawable.ic_cubes, 10_000));
     }
 
